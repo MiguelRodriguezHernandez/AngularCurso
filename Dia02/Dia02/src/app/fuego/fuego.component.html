@@ -1,0 +1,22 @@
+<!-- <div class="container">
+    <div class="row center-block">
+      <img src="https://i.pinimg.com/236x/10/9e/11/109e11c6b044482c1e3a7726cf565ca5-icon-png-yl-oils.jpg" width="250px"> 
+    </div>
+  </div> -->
+
+  <div class="container">
+      <table class="table">
+        <tr>
+          <th>Name</th>
+          <th>Age</th> 
+          <th>Car</th>
+          <th>eliminar</th>
+        </tr>
+        <tr *ngFor="let obj of objects.data; let i = index">
+          <td>{{obj.name}}</td>
+          <td>{{obj.age}}</td> 
+          <td>{{obj.car}}</td>
+          <td><input (click)="index(i)" type="button" value=""></td>
+        </tr>
+      </table>
+    </div>
