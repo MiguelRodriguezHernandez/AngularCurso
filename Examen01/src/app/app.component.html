@@ -1,0 +1,19 @@
+
+
+<div class="container-fluid">
+  <div class="row" *ngIf="count">
+    <div class="col-md-6" >
+      <app-grafica90s></app-grafica90s>
+    </div>
+    <div class="col-md-6">
+      <app-grafica2000s></app-grafica2000s>
+    </div>
+  </div>
+  <div class="row">
+    <div class="trans">
+      <!-- <input type="button" value="Oculta" ng-click="Click_Button()"> -->
+      <input (click)="Oculta(count)" type="button" value="Oculta">
+    </div>
+  </div>
+</div> 
+

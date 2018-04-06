@@ -1,0 +1,11 @@
+<div style="display: block">
+  <canvas baseChart
+          [data]="pieChartData"
+          [labels]="pieChartLabels"
+          [chartType]="pieChartType"></canvas>
+</div>
+<div align='center' *ngIf="pieChartData[0] < pieChartData[1]">
+  Años 2000: Mayoria de Hombres
+ </div><div align='center' *ngIf="pieChartData[0] > pieChartData[1]">
+  Años 2000: Mayoria de Mujeres
+ </div> 

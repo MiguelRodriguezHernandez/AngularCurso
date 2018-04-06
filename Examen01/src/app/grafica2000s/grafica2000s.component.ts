@@ -1,42 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
+import { ServicioPoblacion2000sService } from '../services/servicio-poblacion2000s.service'
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { PoblacionMexicoService } from './services/poblacion-mexico.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-grafica2000s',
+  templateUrl: './grafica2000s.component.html',
+  styleUrls: ['./grafica2000s.component.css']
 })
-export class AppComponent {
+export class Grafica2000sComponent implements OnInit {
+  ngOnInit() {
+  }
+
   public pieChartLabels:string[] = ['Mujeres', 'Hombres'];
   public pieChartData:number[] = [0, 0];
   public pieChartType:string = 'pie';
-  public lineChartLabels:Array<any> = ['1991'];
+  public lineChartLabels:Array<any> = ['2000','2001','2002','2003','2004','2005','2006','2007','2008','2009'];
 
-  constructor(private poblacionService:PoblacionMexicoService) {
+  constructor(private poblacionService:ServicioPoblacion2000sService) {
     let pieChartData:number[] = [0, 0];
     this.lineChartLabels.forEach((año, index) => {
       this.poblacionService.getPoblaciondeMexicoPorAño(año).subscribe(res => {
         pieChartData[0] += res['females'];
         pieChartData[1] += res['males'];
         this.pieChartData = pieChartData;
-        console.log(this.pieChartData);
       });
       
-    });
-
- 
+    });}
+   
   }
- 
-  // events
-  public chartClicked(e:any):void {
-    console.log(e);
-  }
- 
-  public chartHovered(e:any):void {
-    console.log(e);
-  }
-}
