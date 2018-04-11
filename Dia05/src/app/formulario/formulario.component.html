@@ -1,0 +1,65 @@
+<form [formGroup]="xForm">
+  <div class="form-group">
+    <label for="Nombres">Nombre(s)</label>
+    <input formControlName="nombres" type="text" class="form-control" id="nombres" aria-describedby="nombresHelp" placeholder="Nombre(s)">
+    <small id="nombresHelp" class="form-text text-muted">Ingresa tu nombre(s).</small>
+    <div class="alert alert-warning" role="alert" *ngIf="!xForm.controls['nombres'].valid && xForm.controls['nombres'].touched">
+      Sólo letras con acentos.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="ApellidoP">Apellido Paterno</label>
+    <input formControlName="apellidoP" type="text" class="form-control" id="apellidoP" aria-describedby="apellidoPHelp" placeholder="Apellido Paterno">
+    <small id="apellidoPHelp" class="form-text text-muted">Ingresa apellido paterno.</small>
+    <div class="alert alert-warning" role="alert" *ngIf="!xForm.controls['apellidoP'].valid && xForm.controls['apellidoP'].touched">
+      Sólo letras con acentos.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="ApellidoM">Apellido Materno</label>
+    <input formControlName="apellidoM" type="text" class="form-control" id="apellidoM" aria-describedby="apellidoMHelp" placeholder="Apellido Materno">
+    <small id="apellidoMHelp" class="form-text text-muted">Ingresa apellido materno.</small>
+    <div class="alert alert-warning" role="alert" *ngIf="!xForm.controls['apellidoM'].valid && xForm.controls['apellidoM'].touched">
+      Sólo letras con acentos.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email">
+    <small id="emailHelp" class="form-text text-muted">Ingresa tu correo electronico.</small>
+    <div class="alert alert-warning" role="alert" *ngIf="!xForm.controls['email'].valid && xForm.controls['email'].touched">
+      Formato de correo invalido.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <div class="alert alert-warning" role="alert" *ngIf="!xForm.controls['password'].valid && xForm.controls['password'].touched">
+      Tamaño minimo 6 caracteres.
+    </div>
+  </div>
+  <!-- <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div> -->
+  <div class="form-group">
+    <label for="edad">Edad</label>
+    <input formControlName="edad" type="number" class="form-control" id="edad" placeholder="Edad">
+    <div class="alert alert-warning" role="alert" *ngIf="!xForm.controls['edad'].valid && xForm.controls['edad'].touched">
+     La edad debe ser mayor a 18 y menor a 70
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="genero">Genero</label>
+    <!-- <select multiple class="form-control" id="exampleFormControlSelect2"> -->
+    <select formControlName="genero"  class="form-control" id="genero">
+      <option value="null">Selecciona Genero</option>
+      <option value="MASCULINO">MASCULINO</option>
+      <option value="FEMENINO">FEMENINO</option>
+    </select>
+    <div class="alert alert-warning" role="alert" *ngIf="!xForm.controls['genero'].valid && xForm.controls['genero'].touched"> 
+      Se requiere seleccionar genero
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="Enviar(xForm.value)" [disabled]="!xForm.valid">Submit</button>
+</form>
