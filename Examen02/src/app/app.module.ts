@@ -1,21 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import { ChartsModule } from 'ng2-charts';
+
+
 import { AppComponent } from './app.component';
 import { FormularioComponent } from './formulario/formulario.component';
-import { PeticionPostService } from './servicio/peticion-post.service';
+import { GraficaComponent } from './grafica/grafica.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormularioComponent
+    FormularioComponent,
+    GraficaComponent
   ],
   imports: [
-    BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule
+    BrowserModule,
+    FormsModule, 
+    ChartsModule,
+    ReactiveFormsModule
   ],
-  providers: [PeticionPostService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validator, Validators} from '@angular/forms';
+import {PeticionPostService} from '../servicio/peticion-post.service';
 
 @Component({
   selector: 'app-formulario',
@@ -10,7 +11,7 @@ export class FormularioComponent implements OnInit {
 
   xForm : FormGroup;
 
-  constructor(private form : FormBuilder) { }
+  constructor(private form : FormBuilder, private postservice : PeticionPostService) { }
   ngOnInit() {
     this.xForm = this.form.group({
       'nombres' : [null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZñÑáéíóúÁÉÍÓÚ_ ]+")])],
@@ -22,9 +23,14 @@ export class FormularioComponent implements OnInit {
       'genero' : [null, Validators.required]
     })
   }
-Enviar(Data:FormGroup){
-console.log(Data);
-}
+  Enviar(Data:FormGroup){
+  this.postservice.peticionPost(Data).subscribe(res => { 
+console.log(res);
+  })
+  }
+//  Enviar(Data:FormGroup){
+//  console.log(Data);
+//  }
   // ngOnInit() {
   //   this.xForm = this.form.group({
   //     'name' : [null, Validators.compose([Validators.required, Validators.minLength(4)])],
